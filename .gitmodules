@@ -22,3 +22,6 @@
 [submodule ".ref/doge/dogecoin-spv-node"]
 	path = .ref/doge/dogecoin-spv-node
 	url = https://github.com/ShibeTechnology/dogecoin-spv-node
+[submodule ".ref/btc/lightnodes/electrum"]
+	path = .ref/btc/lightnodes/electrum
+	url = https://github.com/spesmilo/electrum
