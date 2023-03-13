@@ -1,0 +1,9 @@
+- pattern matching
+- derive: priv key --> pub key --> addr --> scripthash
+- convert: {x format} --> {light node specified format}
+- find light nodes/mod wallets and make light nodes
+- get all free public full node apis and make single api (have config file for service priority)
+- make api with light and full nodes
+- make webapp
+- image decoding
+- cli

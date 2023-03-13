@@ -1,0 +1,4 @@
+[submodule "bitcoinbook"]
+	path = .notes/btc/bitcoinbook
+        url = https://github.com/bitcoinbook/bitcoinbook
+
