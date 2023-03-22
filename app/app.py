@@ -19,6 +19,12 @@ async def root(request: Request):
 async def read_item(request: Request, id: str):
     return templates.TemplateResponse("item.html", {"request": request, "id": id})
 
+
+@app.options("/")
+async def handle_options():
+    return {"Allow": "POST"}
+
+
 # @app.route("/")
 
 # # todo
