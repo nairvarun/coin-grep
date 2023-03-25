@@ -3,7 +3,7 @@ import json
 from requests import get
 
 def check_addr(addr: str) -> bool:
-    return _check_from_moneroexplorer(addr)
+    return _check_from_xmrchain(addr)
 
 def _check_from_xmrchain(addr: str) -> bool:
     res = get(f'https://xmrchain.net/search?value={addr}')
