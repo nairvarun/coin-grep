@@ -64,9 +64,4 @@ def is_liquid_address(address):
 
         
         
-a=str(input())
-print(is_valid_polygon(a))
 
-print(is_avalanche_address(a))
-print(is_tron_address(a))
-print(is_eos_address(a))
