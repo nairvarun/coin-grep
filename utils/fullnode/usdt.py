@@ -27,7 +27,7 @@ def get_addr_details(addr: str) -> bool:
 
 def _get_details_curlapi(addr: str):
     if check_addr(addr):
-        header = "Content-Type: application/x-www-form-urlencoded"
+        header = "Content-Type: application/ x-www-form-urlencoded"
         url = "https://api.omniexplorer.info/v1/address/addr/"
         command = f'curl -sS -X POST -H "{header}" -H "{header}" -d "addr={addr}" "{url}"'
 
