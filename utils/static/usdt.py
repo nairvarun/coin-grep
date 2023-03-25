@@ -1,3 +1,6 @@
+import re
+
+
 def is_avalanche_address(address):
     c_chain_pattern = r"^0x[0-9a-fA-F]{40}$"
     x_chain_pattern = r"^X-[a-zA-Z0-9]{1,102}$"
