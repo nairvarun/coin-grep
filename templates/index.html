@@ -29,3 +29,12 @@
 <script src="{{ url_for('static', path='/index.js') }}"></script>
 
 </html>
+
+
+<!-- # @api.get("/", response_class=HTMLResponse)
+# async def root(request: Request):
+#     return templates.TemplateResponse("index.html", {"request": request})
+
+# @api.get("/items/{id}", response_class=HTMLResponse)
+# async def read_item(request: Request, id: str):
+#     return templates.TemplateResponse("item.html", {"request": request, "id": id}) -->
