@@ -1,3 +1,0 @@
-#!/bin/bash
-
-xdg-open https://bitcoin.org/bitcoin.pdf &> /dev/null 

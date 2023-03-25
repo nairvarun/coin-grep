@@ -1,3 +1,0 @@
-#!/bin/bash
-
-xdg-open https://en.bitcoin.it/wiki/Main_Page &> /dev/null 
