@@ -1,9 +1,18 @@
 from utils import qr
 from utils.fullnode import btc, eth, doge, dash, xmr
+from utils.lightnode import btc as fullbtc
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+import subprocess
+
+
+START_ELECRUM_DAEMON: list = './utils/lightnode/electrum/run_electrum daemon -d'.split()
+STOP_ELECRUM_DAEMON: list = './utils/lightnode/electrum/run_electrum stop'.split()
+
+subprocess.run(STOP_ELECRUM_DAEMON)
+subprocess.run(START_ELECRUM_DAEMON)
 
 api = FastAPI()
 
@@ -28,8 +37,7 @@ async def handle_options():
 
 @api.post("/generate_output")
 async def generate_output(input: dict):
-
-     #Retrieve the input string from the request body
+    #Retrieve the input string from the request body
     input_str = input["input"]
 
     #TODO: Write code to generate the output string using your logic here
@@ -38,23 +46,10 @@ async def generate_output(input: dict):
     #Return a JSON response containing the generated output
     return JSONResponse(content={"output": output_str})
 
+@api.get("/check")
+async def check(a: str, use_api: bool=False) -> str:
+    return fullbtc.check_addr(a)
+
 @api.get("/read_qr")
 async def read_qr(qr: str) -> str:
     return qr.read_qr(qr)
-
-@api.get("/identify")
-async def identify(a: str, use_api: bool=False) -> str:
-    return xmr.check_addr(a)
-
-
-# @app.route("/")
-
-# # todo
-# @app.get("/checkstr")
-# async def check():
-#     pass
-
-# # todo
-# @app.get("/checkimg")
-# async def check():
-#     pass
