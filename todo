@@ -1,9 +1,9 @@
-- pattern matching
-- derive: priv key --> pub key --> addr --> scripthash
-- convert: {x format} --> {light node specified format}
-- find light nodes/mod wallets and make light nodes
-- get all free public full node apis and make single api (have config file for service priority)
-- make api with light and full nodes
-- make webapp
-- image decoding
-- cli
+- pattern matching [all but tether 3] [pub and priv]
+- derive: priv key --> pub key --> addr --> scripthash [btc, doge]
+- find light nodes/mod wallets and make light nodes [btc]
+- get all free public full node apis and make single api (have config file for service priority) [thether]
+- make api with light and full nodes [done]
+- make webapp [no]
+- mobile webapp [wip]
+- image/qr decoding [done]
+- cli [no]
