@@ -10,11 +10,11 @@ from fastapi.templating import Jinja2Templates
 import subprocess
 
 
-# START_ELECRUM_DAEMON: list = './utils/lightnode/electrum/run_electrum daemon -d'.split()
-# STOP_ELECRUM_DAEMON: list = './utils/lightnode/electrum/run_electrum stop'.split()
+START_ELECRUM_DAEMON: list = './utils/lightnode/electrum/run_electrum daemon -d'.split()
+STOP_ELECRUM_DAEMON: list = './utils/lightnode/electrum/run_electrum stop'.split()
 
-# subprocess.run(STOP_ELECRUM_DAEMON)
-# subprocess.run(START_ELECRUM_DAEMON)
+subprocess.run(STOP_ELECRUM_DAEMON)
+subprocess.run(START_ELECRUM_DAEMON)
 
 # command to run api:
     # uvicorn api:api --reload
