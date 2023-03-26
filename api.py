@@ -50,9 +50,7 @@ async def check(addr: str, use_api: bool=False) -> str:
 
 @api.get("/get_details")
 async def get_details(addr: str, use_api: bool=False) -> dict:
-    if usdt.check_addr(addr):
-        return usdt.get_addr_details(addr)
-    elif static_btc.is_valid_bitcoin_address(addr):
+    if static_btc.is_valid_bitcoin_address(addr):
         return btc.get_addr_details(addr)
     if static_dash.is_valid_dash_address(addr):
         return dash.get_addr_details(addr)
@@ -62,6 +60,8 @@ async def get_details(addr: str, use_api: bool=False) -> dict:
         return eth.get_addr_details(addr)
     elif static_xmr.is_valid_monero_address(addr):
         return xmr.get_addr_details(addr)
+    elif usdt.check_addr(addr):
+        return usdt.get_addr_details(addr)
     else:
         return "---"
 
