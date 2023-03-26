@@ -31,10 +31,10 @@ def generate_bitcoin_address(private_key):
 
     return bitcoin_address
 
-# Take private key as user input
-private_key = input("Enter the private key in hexadecimal format: ")
+# # Take private key as user input
+# private_key = input("Enter the private key in hexadecimal format: ")
 
-# Generate the Bitcoin address
-address = generate_bitcoin_address(private_key)
+# # Generate the Bitcoin address
+# address = generate_bitcoin_address(private_key)
 
-print("Bitcoin address:", address)
+# print("Bitcoin address:", address)

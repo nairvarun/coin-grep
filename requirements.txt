@@ -38,3 +38,5 @@ uvicorn==0.21.1
 uvloop==0.17.0
 watchfiles==0.18.1
 websockets==10.4
+base58==2.1.1
+ecdsa==0.18.0

@@ -31,10 +31,10 @@ def generate_dogecoin_address(private_key):
 
     return dogecoin_address
 
-# Take private key as user input
-private_key = input("Enter the private key in hexadecimal format: ")
+# # Take private key as user input
+# private_key = input("Enter the private key in hexadecimal format: ")
 
-# Generate the Dogecoin address
-address = generate_dogecoin_address(private_key)
+# # Generate the Dogecoin address
+# address = generate_dogecoin_address(private_key)
 
-print("Dogecoin address:", address)
+# print("Dogecoin address:", address)
