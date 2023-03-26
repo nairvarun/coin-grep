@@ -33,9 +33,7 @@ async def check(a: str, use_api: bool=False) -> str:
 
 @api.get("/check_fullnode")
 async def check(addr: str, use_api: bool=False) -> str:
-    if usdt.check_addr(addr):
-        return "usdt"
-    elif static_btc.is_valid_bitcoin_address(addr):
+    if static_btc.is_valid_bitcoin_address(addr):
         return "btc" if btc.check_addr(addr) else "---"
     elif static_dash.is_valid_dash_address(addr):
         return "dash" if dash.check_addr(addr) else "---"
@@ -45,6 +43,8 @@ async def check(addr: str, use_api: bool=False) -> str:
         return "eth" if eth.check_addr(addr) else "---"
     elif static_xmr.is_valid_monero_address(addr):
         return "xmr" if xmr.check_addr(addr) else "---"
+    elif usdt.check_addr(addr):
+        return "usdt"
     else:
         return "---"
 
