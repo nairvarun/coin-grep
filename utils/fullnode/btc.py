@@ -20,7 +20,7 @@ def test__check_from_blockcypher():
 
 def get_addr_details(addr: str) -> dict:
     return _get_from_blockcypher(addr)
-    
+
 
 def _get_from_blockcypher(addr: str) -> dict:
     if check_addr(addr):
@@ -37,5 +37,3 @@ def test__get_addr_details():
     # 2
     details = get_addr_details('3FZbgi29cpjq2GjdwV8eyHuJJnkLtktZc6')
     assert (not details) == True
-
-test__get_addr_details()
