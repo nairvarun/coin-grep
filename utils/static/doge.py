@@ -1,3 +1,5 @@
+import re
+
 def is_valid_dogecoin_address(address):
 
     # Check if address is of the right length
@@ -13,3 +15,6 @@ def is_valid_dogecoin_address(address):
         return(False)
 
     return True
+
+# a=str(input())
+# print(is_valid_dogecoin_address(a))

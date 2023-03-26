@@ -38,4 +38,4 @@ def test__get_addr_details():
     details = get_addr_details('3FZbgi29cpjq2GjdwV8eyHuJJnkLtktZc6')
     assert (not details) == True
 
-test__get_addr_details()
+# test__get_addr_details()

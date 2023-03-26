@@ -2,7 +2,7 @@ from Crypto.Hash import keccak
 import re
 import hashlib
 import base58
-
+from . import dash 
 
 def is_valid_bitcoin_address(address):
 
@@ -31,7 +31,7 @@ def is_valid_bitcoin_address(address):
     # Compare the new checksum with the original checksum
     
 
-    if is_valid_dash_address(address):
+    if dash.is_valid_dash_address(address):
         return False
     else:
         return checksum == new_checksum
