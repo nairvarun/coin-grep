@@ -2,7 +2,7 @@ from utils import qr
 from utils.fullnode import btc, eth, doge, dash, xmr, usdt
 from utils.static import btc as static_btc, eth as static_eth, doge as static_doge, dash as static_dash, xmr as static_xmr
 from utils.lightnode import btc as lightbtc
-from adrs import adrs_rtrv_btcn as derive_btc, ddg_Adrs as derive_doge
+from utils.derive import btc as derive_btc, doge as derive_doge
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
@@ -75,7 +75,7 @@ async def read_qr(qr: str, use_api: bool=False) -> str:
             addr = qr[qr.find(":") + 1 : ]
     else:
         addr = qr
-    
+
     ### could be either check_addr or get_addr_details
     if usdt.check_addr(addr):
         return "usdt"
@@ -91,7 +91,7 @@ async def read_qr(qr: str, use_api: bool=False) -> str:
         return "xmr" if xmr.check_addr(addr) else "---"
     else:
         return "---"
-    
+
 
 @api.get("/derive")
 async def derive_addr(key_type: str, key: str, use_api: bool=False) -> str:

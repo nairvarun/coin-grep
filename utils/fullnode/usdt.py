@@ -36,18 +36,21 @@ def _get_details_curlapi(addr: str):
 
         ext_data = json.loads(output)
         trimmed_data = {}
-        for data in ext_data['balance']:
-            if data['id'] == "31":
-                trimmed_data['amount'] = data['propertyinfo']['amount']
-                trimmed_data['category'] = data['propertyinfo']['category']
-                trimmed_data['fee'] = data['propertyinfo']['fee']
-                trimmed_data['name'] = data['propertyinfo']['name']
-                trimmed_data['totaltokens'] = data['propertyinfo']['totaltokens']
-                trimmed_data['value'] = data['value']
-                trimmed_data['symbol'] = data['symbol']
+        try:
+            for data in ext_data['balance']:
+                if data['id'] == "31":
+                    trimmed_data['amount'] = data['propertyinfo']['amount']
+                    trimmed_data['category'] = data['propertyinfo']['category']
+                    trimmed_data['fee'] = data['propertyinfo']['fee']
+                    trimmed_data['name'] = data['propertyinfo']['name']
+                    trimmed_data['totaltokens'] = data['propertyinfo']['totaltokens']
+                    trimmed_data['value'] = data['value']
+                    trimmed_data['symbol'] = data['symbol']
 
-                return trimmed_data
-        return trimmed_data
+                    return trimmed_data
+            return trimmed_data
+        except:
+            return {"Work in progress" : "True"}
     else:
         return {}
 
