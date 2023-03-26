@@ -1,35 +1,40 @@
-import base64
-import os
-from cryptography.fernet import Fernet
+import ecdsa
+import hashlib
+import base58
 
-process = input("select encryption (E) or decryption (D)? ")
+def generate_bitcoin_address(private_key):
+    # Step 1: Generate the private key object from the input string
+    private_key_bytes = bytes.fromhex(private_key)
+    curve = ecdsa.SECP256k1
+    sk = ecdsa.SigningKey.from_string(private_key_bytes, curve=curve)
 
-if process == "E":
-    message = input("Enter the message for encryption: ").encode()
+    # Step 2: Derive the public key
+    vk = sk.get_verifying_key()
 
-    password = input("Enter the password: ").encode()
-    key = os.urandom 
-    key = base64.urlsafe_b64encode(password)
+    # Step 3: Generate the hash
+    public_key_bytes = vk.to_string('compressed')
+    sha256_hash = hashlib.sha256(public_key_bytes).digest()
+    ripemd160_hash = hashlib.new('ripemd160', sha256_hash).digest()
 
-    cipher = Fernet(key)
-    cipher_text = cipher.encrypt(message)
+    # Step 4: Add the network byte
+    network_byte = b'\x00'
+    hash_with_network_byte = network_byte + ripemd160_hash
 
-    file_name = input("Enter the file name to store the encrypted message: ")
-    with open(file_name, "wb") as file:
-        file.write(cipher_text)
+    # Step 5: Generate the checksum
+    first_hash = hashlib.sha256(hash_with_network_byte).digest()
+    second_hash = hashlib.sha256(first_hash).digest()
+    checksum = second_hash[:4]
 
-elif process == "D":
-    file_name = input("Enter the file name with the encrypted message: ")
-    with open(file_name, "rb") as file:
-        cipher_text = file.read()
+    # Step 6: Create the address
+    address_bytes = hash_with_network_byte + checksum
+    bitcoin_address = base58.b58encode(address_bytes).decode('utf-8')
 
-    password = input("Enter the password: ").encode()
+    return bitcoin_address
 
-    key = base64.urlsafe_b64encode.encode()
+# Take private key as user input
+private_key = input("Enter the private key in hexadecimal format: ")
 
-    cipher = Fernet(key)
-    plain_text = cipher.decrypt(cipher_text)
+# Generate the Bitcoin address
+address = generate_bitcoin_address(private_key)
 
-    print("Decrypted Message:", plain_text.decode())
-else:
-    print("Invalid process choice. Please choose either 'E' for encryption or 'D' for decryption.")
+print("Bitcoin address:", address)
