@@ -1,3 +1,6 @@
 [submodule "lightnodes/electrum"]
 	path = lightnodes/electrum
 	url = https://github.com/spesmilo/electrum.git
+[submodule "lib/lightnodes/electrum"]
+	path = lib/lightnodes/electrum
+	url = https://github.com/spesmilo/electrum
