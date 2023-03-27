@@ -1,0 +1,7 @@
+README.md
+setup.py
+coingrep.egg-info/PKG-INFO
+coingrep.egg-info/SOURCES.txt
+coingrep.egg-info/dependency_links.txt
+coingrep.egg-info/top_level.txt
+lightnodes/__init__.py

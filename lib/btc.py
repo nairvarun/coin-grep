@@ -4,6 +4,7 @@ import hashlib
 import base58
 import json
 import requests
+from .. import lightnodes
 
 # TODO: add doc strings
 # TODO: add tests
@@ -50,9 +51,9 @@ class BTC(Cryptocurrency):
     # TODO: handle all 3 in one method
     @classmethod
     def validate(cls, addr):
+        return cls.__validate_by_lightnode(addr)
         return cls.__validate_by_prefix(addr)
         return cls.__validate_by_fullnode(addr)
-        return cls.__validate_by_lightnode(addr)
 
     @classmethod
     def get_info(cls, addr):
@@ -93,7 +94,9 @@ class BTC(Cryptocurrency):
 
     @staticmethod
     def __validate_by_lightnode(addr):
-        pass
+        # return 9
+        return lightnodes.is_address(addr)
+        return lightnodes. bitcoin.is_address(addr)
 
     @classmethod
     def __validate_by_fullnode(cls, addr):

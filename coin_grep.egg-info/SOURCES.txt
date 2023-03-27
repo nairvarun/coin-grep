@@ -1,0 +1,7 @@
+README.md
+setup.py
+coin_grep.egg-info/PKG-INFO
+coin_grep.egg-info/SOURCES.txt
+coin_grep.egg-info/dependency_links.txt
+coin_grep.egg-info/top_level.txt
+lightnodes/__init__.py
