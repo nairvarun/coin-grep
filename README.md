@@ -38,9 +38,3 @@ Current implemented routes in the API are:
 |<p align="center">`/get_details`</p>| This route requires 1 parameter `addr`, and takes the address in the form of base58 encoded string. The API returns the details about the address gathered from external API's and gives the result in JSON format.|
 |<p align="center">`/check_fullnode`</p>| This route requires 1 paramter `addr`, and takes the address in the form of base58 encoded string. The address is first passed through a static check which identifies the currency type and then an external API call is made to ensure the address validity. |
 |<p align="center">`/check_lighnode`</p>| This route requires 1 parameter `addr`,  and takes the address in the form of base58 encoded string. The address is passed through a static check which identifies th currency type. The tool then queries the official chain of the address and runs it through the official chain of the currency. |
-
-
-
-
-
-
