@@ -1,0 +1,61 @@
+# ```$> coin-grep```
+
+## errs
+- too many business models
+- need to improve technical explanation
+- why have multiple api endpoints?
+- app ui
+- scattered codebase
+- need more docs and testsq
+
+## features:
+- given a privkey, pubkey, addr, qrcode, identify the network that it belongs to
+    - qr decoding in app
+    - qr uploading and decoding in backend
+    - addr derivation: privkey ==> pubkey ==> addr (all possible addr formats)
+    - prefix checks
+    - light nodes where supported
+    - multiple public fullnode apis
+    - pruned fullnode (??)
+- given an address, get all possible details and show it in a presentable/useful way
+    - light nodes where supported
+    - multiple public fullnode apis
+- api + app + webapp(?) + cli(?)
+    - flutter
+    - fastapi
+- chainanalysis reactor like trail analysis(?)
+    - (??)
+- support running fullnodes
+- multi lingual app (??)
+- real time tracking/addr subscriptions
+- collaboration tools
+- integration with other tools
+- chatgpt plugin
+- more ai/ml (??)
+
+## business model:  // pick 2 at most
+- (??)
+
+## misc:
+- ppt
+- dockerize
+- host api
+- get domain (??)
+
+## innovation:
+- unified api
+- multi-chain
+- multi-platform
+- free
+- easy to host and maintain
+- no single source of truth
+
+## timeline
+| S No. | Task and Activities                   | Tentative Timeline               |
+|-------|---------------------------------------|----------------------------------|
+|   1   | Launch of Kavach Hackathon            | 16th Feb 2023                    |
+|   2   | Registration & Idea Submission        | 1st March 2023 – 15th April 2023 |
+|   3   | Idea Evaluation                       | 16th April 2023 – 15th May 2023  |
+|   4   | Announcement of Finalist (in Batches) | 16th May 2023 – 31st May 2023    |
+|   5   | Training of Finalist                  | 1st June 2023 – 1st July 2023    |
+|   6   | Grand Finale of the Hackathon         | 12th July 2023 – 14th July 2023  |
