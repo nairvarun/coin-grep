@@ -1,10 +1,10 @@
-from _cryptocurrency import Cryptocurrency
 import ecdsa
 import hashlib
 import base58
 import re
 import requests
 import json
+from lib._cryptocurrency import Cryptocurrency
 
 # TODO: add doc strings
 # TODO: add tests

@@ -1,10 +1,10 @@
-from _cryptocurrency import Cryptocurrency
 import ecdsa
 import hashlib
 import base58
 import json
 import requests
-from lightnodes import electrum
+from lib._cryptocurrency import Cryptocurrency
+from lightnode import is_btc_address
 
 # TODO: add doc strings
 # TODO: add tests
@@ -95,7 +95,7 @@ class BTC(Cryptocurrency):
     @staticmethod
     def __validate_by_lightnode(addr):
         # return 9
-        return electrum.electrum.bitcoin.is_address(addr)
+        return is_btc_address(addr)
         return lightnodes. bitcoin.is_address(addr)
 
     @classmethod

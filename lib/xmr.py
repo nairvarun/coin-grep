@@ -1,9 +1,5 @@
-from _cryptocurrency import Cryptocurrency
-import ecdsa
-import hashlib
-import base58
-import json
 import requests
+from lib._cryptocurrency import Cryptocurrency
 
 # TODO: add doc strings
 # TODO: add tests

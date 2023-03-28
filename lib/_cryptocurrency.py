@@ -1,5 +1,5 @@
 from abc import ABCMeta, abstractclassmethod
-from _noinstance import NoInstance
+from lib._noinstance import NoInstance
 
 class Cryptocurrency(NoInstance, metaclass=ABCMeta):
     def __init__(self) -> None:

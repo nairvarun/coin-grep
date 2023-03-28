@@ -1,9 +1,7 @@
-from _cryptocurrency import Cryptocurrency
-import hashlib
-import base58
 import json
 import re
 import os
+from lib._cryptocurrency import Cryptocurrency
 
 # TODO: add doc strings
 # TODO: add tests

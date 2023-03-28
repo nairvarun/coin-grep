@@ -1,7 +1,7 @@
-from _cryptocurrency import Cryptocurrency
 import requests
 import json
 import re
+from lib._cryptocurrency import Cryptocurrency
 
 # TODO: add doc strings
 # TODO: add tests
