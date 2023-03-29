@@ -11,25 +11,25 @@ from lib._cryptocurrency import Cryptocurrency
 
 class USDT(Cryptocurrency):
 
-    def __init__(self) -> None:
+    def __init__(self) -> TypeError:
         super().__init__()
 
     @classmethod
-    def derive(cls, key):
+    def derive(cls, key: str) -> dict:
         pass
 
     # TODO: handle all 3 in one method
     @classmethod
-    def validate(cls, addr):
+    def validate(cls, addr: str) -> bool:
         return cls.__validate_by_prefix(addr)
         return cls.__validate_by_fullnode(addr)
 
     @classmethod
-    def get_info(cls, addr):
+    def get_info(cls, addr: str) -> dict:
         return cls.__get_info_from_fullnode(addr)
 
     @classmethod
-    def __validate_by_prefix(cls, addr):
+    def __validate_by_prefix(cls, addr: str) -> bool:
         return any([
             cls.__validate_by_prefix__avalanche(addr),
             cls.__validate_by_prefix__eos(addr),
@@ -39,11 +39,11 @@ class USDT(Cryptocurrency):
         ])
 
     @classmethod
-    def __validate_by_fullnode(cls, addr):
+    def __validate_by_fullnode(cls, addr: str) -> bool:
         return cls.__validate_by_fullnode__omniexplorer(addr)
 
     @staticmethod
-    def __validate_by_fullnode__omniexplorer(addr):
+    def __validate_by_fullnode__omniexplorer(addr: str) -> bool:
         header = "Content-Type: application/x-www-form-urlencoded"
         url = "https://api.omniexplorer.info/v1/address/addr/"
         command = f'curl -sS -X POST -H "{header}" -H "{header}" -d "addr={addr}" "{url}"'
@@ -55,11 +55,11 @@ class USDT(Cryptocurrency):
         return not 'error' in r.keys()
 
     @classmethod
-    def __get_info_from_fullnode(cls, addr):
+    def __get_info_from_fullnode(cls, addr: str) -> dict:
         return cls.__get_info_from_fullnode__omniexplorer(addr)
 
     @classmethod
-    def __get_info_from_fullnode__omniexplorer(cls, addr):
+    def __get_info_from_fullnode__omniexplorer(cls, addr: str) -> dict:
         if cls.validate(addr):
             header = "Content-Type: application/ x-www-form-urlencoded"
             url = "https://api.omniexplorer.info/v1/address/addr/"
@@ -86,7 +86,7 @@ class USDT(Cryptocurrency):
             return {}
 
     @staticmethod
-    def __validate_by_prefix__avalanche(addr):
+    def __validate_by_prefix__avalanche(addr: str) -> bool:
         c_chain_pattern = r"^0x[0-9a-fA-F]{40}$"
         x_chain_pattern = r"^X-[a-zA-Z0-9]{1,102}$"
         p_chain_pattern = r"^P-[a-zA-Z0-9]+$"  # corrected pattern
@@ -101,7 +101,7 @@ class USDT(Cryptocurrency):
             return False
 
     @staticmethod
-    def __validate_by_prefix__polygon(addr):
+    def __validate_by_prefix__polygon(addr: str) -> bool:
         polygon_address_pattern = "^0x[a-fA-F0-9]{40}$"
 
         # Sample string that may contain a Polygon address
@@ -117,7 +117,7 @@ class USDT(Cryptocurrency):
             return(False)
 
     @staticmethod
-    def __validate_by_prefix__tron(addr):
+    def __validate_by_prefix__tron(addr: str) -> bool:
         if len(addr) != 34 and len(addr)!=42:
             return False
         if not addr.startswith('T'):
@@ -130,13 +130,13 @@ class USDT(Cryptocurrency):
         return True
 
     @staticmethod
-    def __validate_by_prefix__eos(addr):
+    def __validate_by_prefix__eos(addr: str) -> bool:
         if isinstance(addr, str):
             return addr.startswith('EOS') and len(addr) == 53 and all(c in '12345abcdefghijklmnopqrstuvwxyz' for c in addr[3:])
         return False
 
     @staticmethod
-    def __validate_by_prefix__liquid(addr):
+    def __validate_by_prefix__liquid(addr: str) -> bool:
         # Check if the address starts with "q" or "Q"
         if not addr.startswith('q') and not addr.startswith('Q'):
             return False

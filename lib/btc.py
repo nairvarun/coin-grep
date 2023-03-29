@@ -8,17 +8,17 @@ from lightnode import is_btc_address
 
 # TODO: add doc strings
 # TODO: add tests
-# TODO: add types
 # TODO: derive [priv] --> [pub] --> addr (normal and segwit)
 # TODO: only import needed methods from imports (??)
 
 class BTC(Cryptocurrency):
 
-    def __init__(self) -> None:
+    def __init__(self) -> TypeError:
         super().__init__()
 
+    # TODO: redo
     @classmethod
-    def derive(cls, key):
+    def derive(cls, key: str) -> dict:
         private_key = key
         # Step 1: Generate the private key object from the input string
         private_key_bytes = bytes.fromhex(private_key)
@@ -50,18 +50,18 @@ class BTC(Cryptocurrency):
 
     # TODO: handle all 3 in one method
     @classmethod
-    def validate(cls, addr):
+    def validate(cls, addr: str) -> bool:
         return cls.__validate_by_lightnode(addr)
         return cls.__validate_by_prefix(addr)
         return cls.__validate_by_fullnode(addr)
 
     @classmethod
-    def get_info(cls, addr):
+    def get_info(cls, addr: str) -> dict:
         return cls.__get_info_from_fullnode(addr)
         return cls.__get_info_from_lighnode(addr)
 
     @staticmethod
-    def __validate_by_prefix(addr):
+    def __validate_by_prefix(addr: str) -> bool:
         try:
             # Decode the Base58Check encoded address
             decoded_address = base58.b58decode(addr)
@@ -93,17 +93,16 @@ class BTC(Cryptocurrency):
         #     return checksum == new_checksum
 
     @staticmethod
-    def __validate_by_lightnode(addr):
-        # return 9
+    def __validate_by_lightnode(addr: str) -> bool:
         return is_btc_address(addr)
         return lightnodes. bitcoin.is_address(addr)
 
     @classmethod
-    def __validate_by_fullnode(cls, addr):
+    def __validate_by_fullnode(cls, addr: str) -> bool:
         return cls.__validate_by_fullnode__blockcypher(addr)
 
     @staticmethod
-    def __validate_by_fullnode__blockcypher(addr):
+    def __validate_by_fullnode__blockcypher(addr: str) -> bool:
         res = requests.get(f'https://api.blockcypher.com/v1/btc/main/addrs/{addr}/balance')
         return True if 'error' not in json.loads(res.text) else False
 
@@ -112,11 +111,11 @@ class BTC(Cryptocurrency):
         pass
 
     @classmethod
-    def __get_info_from_fullnode(cls, addr):
+    def __get_info_from_fullnode(cls, addr: str) -> dict:
         return cls.__get_info_from_fullnode__blockcypher(addr)
 
     @classmethod
-    def __get_info_from_fullnode__blockcypher(cls, addr):
+    def __get_info_from_fullnode__blockcypher(cls, addr: str) -> bool:
         if cls.validate(addr):
             res = requests.get(f'https://api.blockcypher.com/v1/btc/main/addrs/{addr}/balance')
             return json.loads(res.text)
