@@ -1,28 +1,30 @@
 # ```$> coin-grep```
 
-## priority list
-
-
-## errs
-- too many business models
-- need to improve technical explanation
-- why have multiple api endpoints?
+## to improve
+- api
+    - combine separated endpoints and filter & resolve conflicts internally
+    - have uniform returns (json?)
+- business models
+    - fix at most 2 models
+    - keep problem providing org specific
+- technical explanation
+    - better slides
+    - better explanation
+    - everyoine should know basics of everything
+- codebase structure
+    - docs
+    - tests
+    - type hints
+    - error handling
+    - None
+    - protect main
+    - ci/cd
+    - repo for app
+    - modular repos
 - app ui
-- scattered codebase
-- need more docs and testsq
-- all know all
+    - minimal but focused and intuitive
 
-## login
-- history
-    - id usrs
-    - login
-- colab
-- access ctrls
-- ractor/maltego
-- notify (?)
-
-## features:
-- app login system [collab angle]
+## features
 - given a privkey, pubkey, addr, qrcode, identify the network that it belongs to
     - qr decoding in app
     - [last] qr uploading and decoding in backend
@@ -32,33 +34,28 @@
     - multiple public fullnode apis
     - pruned fullnode (??)
     - fall back on what??
+    - support running fullnodes
+    - identify the exchange that a wallet belongs to
 - given an address, get all possible details and show it in a presentable/useful way
     - light nodes where supported
     - multiple public fullnode apis
 - api + app + webapp(?)
     - flutter
     - fastapi
-- chainanalysis reactor like trail analysis(?)
-    - (??)
-- support running fullnodes
-- real time tracking/addr subscriptions
-    - notify on `x` amt spent
-- collaboration tools
-- [no] integration with other tools
-- [no] chatgpt plugin
+- account based model
+    - collaboration
+    - activity history
+    - reactor/maltego
+    - subscribe to account activity
+    - real time tracking/addr subscriptions
+        - notify on `x` amt spent
 - more ai/ml (??)
-- irl deanonimizer (leaks, ip, ??)
-- identify the exchange that a wallet belongs to
 - mixer resistant (??)
 - exchange resistant (??)
 
-## business model:  // pick 2 at most
-- (??)
-
-## misc:
-- ppt
-- dockerize
+## todo:
 - host api
+    - dockerize (??)
 - get domain (??)
 
 ## innovation:
@@ -68,6 +65,7 @@
 - free
 - easy to host and maintain
 - no single source of truth
+- collaboration
 
 ## timeline
 | S No. | Task and Activities                   | Tentative Timeline               |
