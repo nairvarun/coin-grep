@@ -1,21 +1,30 @@
 # ```$> coin-grep```
 
-## done
+## features ready
 - addr validation
+    - prefix for all
     - fullnode for all
-    - lightnode for BTC
-- fetch details for all (fullnode)
+    - lightnode for btc
+- fetch details
+    - fullnode for all
+    - lightnode for btc
 - priv key derivation
-- qr id
+    - for doge and btc
+- qr scan
 - app
-- hosted api
+- api
 
 ## features to add
 - add more chain support
-- ai/ml somewhere
+- ai
+    - img decoding (?)
 - data analysis + viz
+- reactor/maltego type
 - login + webapp + infra
 - addr notif
+-  (??) irl deanonymize (??)
+- (??) mixer resistant (??)
+- (??) exchange id (??)
 
 ## to improve
 - api
@@ -24,6 +33,8 @@
 - business models
     - fix at most 2 models
     - keep problem providing org specific
+    - (??) prod as data funnel (??)
+    - saas
 - technical explanation
     - better slides
     - better explanation
@@ -41,39 +52,9 @@
 - app ui
     - minimal but focused and intuitive
 
-## features
-- given a privkey, pubkey, addr, qrcode, identify the network that it belongs to
-    - qr decoding in app
-    - [last] qr uploading and decoding in backend
-    - addr derivation: privkey ==> pubkey ==> addr (all possible addr formats)
-    - prefix checks
-    - light nodes where supported
-    - multiple public fullnode apis
-    - pruned fullnode (??)
-    - fall back on what??
-    - support running fullnodes
-    - identify the exchange that a wallet belongs to
-- given an address, get all possible details and show it in a presentable/useful way
-    - light nodes where supported
-    - multiple public fullnode apis
-- api + app + webapp(?)
-    - flutter
-    - fastapi
-- account based model
-    - collaboration
-    - activity history
-    - reactor/maltego
-    - subscribe to account activity
-    - real time tracking/addr subscriptions
-        - notify on `x` amt spent
-- more ai/ml (??)
-- mixer resistant (??)
-- exchange resistant (??)
-
 ## todo:
 - host api
     - dockerize (??)
-- get domain (??)
 
 ## innovation:
 - unified api
