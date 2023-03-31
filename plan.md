@@ -1,5 +1,22 @@
 # ```$> coin-grep```
 
+## done
+- addr validation
+    - fullnode for all
+    - lightnode for BTC
+- fetch details for all (fullnode)
+- priv key derivation
+- qr id
+- app
+- hosted api
+
+## features to add
+- add more chain support
+- ai/ml somewhere
+- data analysis + viz
+- login + webapp + infra
+- addr notif
+
 ## to improve
 - api
     - combine separated endpoints and filter & resolve conflicts internally
