@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>{{req}}</title>
+    <style>
+        #center {
+            text-align: center;
+            padding: 100;
+        }
+
+        table {
+            margin: 0 auto;
+            /* text-align: center; */
+        }
+    </style>
+</head>
+<body>
+    <!-- <div id="center"> -->
+        <table>
+            {% for k, v in res.items() %}
+            <tr>
+                <td><b>{{k}}</b></td>
+                <td>{{v}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    <!-- </div> -->
+</body>
+</html>
