@@ -1,6 +1,3 @@
-import ecdsa
-import hashlib
-import base58
 import json
 import requests
 from lib._cryptocurrency import Cryptocurrency
