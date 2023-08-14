@@ -1,0 +1,166 @@
+/* nord */
+:root {
+  --nord0: #2e3440;
+  --nord1: #3b4252;
+  --nord2: #434c5e;
+  --nord3: #4c566a;
+  --nord4: #d8dee9;
+  --nord5: #e5e9f0;
+  --nord6: #eceff4;
+  --nord7: #8fbcbb;
+  --nord8: #88c0d0;
+  --nord9: #81a1c1;
+  --nord10: #5e81ac;
+  --nord11: #bf616a;
+  --nord12: #d08770;
+  --nord13: #ebcb8b;
+  --nord14: #a3be8c;
+  --nord15: #b48ead;
+}
+
+::-moz-selection {
+  color: var(--nord0);
+  background: var(--nord9);
+}
+
+::selection {
+  color: var(--nord0);
+  background: var(--nord9);
+}
+
+body {
+  background: var(--nord6);
+  color: var(--nord0);
+}
+
+a {
+  color: var(--nord1);
+}
+
+a:hover {
+  color: var(--nord0);
+  background-color: var(--nord7);
+}
+
+/* index.php */
+
+#idx_logo {
+  padding: 0.5em;
+  font-size: xx-large;
+}
+
+#idx_slogan {
+  /* font-size: xx-large; */
+  font-size: 2.5em;
+}
+
+#idx_main {
+  text-align: center;
+  margin-top: 2em;
+  padding: 2em;
+  padding-top: 20vh;
+}
+
+#idx_search {
+  width: 45vw;
+  height: 5vh;
+  font-size: large;
+  border: 1px solid var(--nord0);
+}
+
+#idx_search:focus {
+  outline: solid var(--nord10);
+}
+
+#idx_submit {
+  height: 5vh;
+  width: 3vw;
+  font-size: large;
+  border: 1px solid var(--nord0);
+  border-radius: 4px;
+  background-color: var(--nord4);
+}
+
+/* resluts.php */
+
+#res_header {
+  font-size: xx-large;
+  display: inline-block;
+  margin-right: 10px;
+  font-style: italic;
+  padding: 0.5em;
+}
+
+#res_qry {
+  font-size: x-large;
+  padding-top: 0.5em;
+  padding-right: 0.5em;
+  padding-left: 0.7em;
+}
+
+#res_qry>span {
+  font-style: italic;
+}
+
+/* #main {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 60vw;
+}
+
+#search {
+  vertical-align: middle;
+  font-size: large;
+}
+
+#submit {
+  vertical-align: middle;
+  font-size: large;
+} */
+
+.res_result {
+  padding: 1em;
+  margin-left: 15vw;
+  margin-top: 3vh;
+  border: 1px solid var(--nord3);
+  border-radius: 10px;
+  background-color: var(--nord4);
+}
+
+.res_result td {
+  border-right: 1px solid var(--nord3);
+  color: var(--nord3);
+  font-size: large;
+  padding: 2em;
+  text-align: center;
+  width: 10em;
+}
+
+.res_result td:last-of-type {
+  border-right: none;
+}
+
+.res_bnum {
+  font-size: x-large;
+  color: var(--nord0);
+}
+
+.res_top {
+  vertical-align: top;
+}
+
+.res_extra_result {
+  padding: 1em;
+  margin-left: 17vw;
+  margin-top: 5vh;
+}
+
+.res_extra_result td {
+  border-top: 1px solid var(--nord3);
+  padding: 1em;
+  font-size: large;
+}
+
+.res_extra_result tr:last-of-type>td {
+  border-bottom: 1px solid var(--nord3);
+}
