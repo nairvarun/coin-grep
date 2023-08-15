@@ -102,22 +102,6 @@ a:hover {
   font-style: italic;
 }
 
-/* #main {
-  display: inline-block;
-  vertical-align: middle;
-  padding-left: 60vw;
-}
-
-#search {
-  vertical-align: middle;
-  font-size: large;
-}
-
-#submit {
-  vertical-align: middle;
-  font-size: large;
-} */
-
 .res_result {
   padding: 1em;
   margin-left: 15vw;

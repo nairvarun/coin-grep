@@ -6,13 +6,25 @@
 </head>
 <body>
     <div id="res_header"><em><a href="index.php">coin-grep</a></em></div>
-    <!-- <div id="main">
-        <input type="search" id="search" name="search" placeholder="addr/tnx">
-        <button type="submit" id="submit">🔍</button>
-    </div> -->
     <br><br>
     <div id="res_qry">
-        ₿ <span><?php echo $_GET['search']; ?></span>
+        <?php
+            require_once('db_connection.php');
+            $curr = $_GET['search'];
+            $sql1 = "SELECT * FROM transaction WHERE transaction = '$curr'";
+            $result = $conn->query($sql1);
+            if ($result->num_rows > 0) {
+                $exists = true;
+            } else {
+                $exists = false;
+            }
+
+            if ($exists) {
+                echo '<input type="checkbox" onchange="handle_txn(this.checked, `' . $curr . '`)" checked> <span class="flag">'.$curr.'</span>';
+            } else {
+                echo '<input type="checkbox" onchange="handle_txn(this.checked, `' . $curr . '`)"> <span>'.$curr.'</span>';
+            }
+        ?>
     </div>
 
     <div id="res_result">
@@ -59,8 +71,6 @@
 
         function handle_txn(checked, val) {
             if (checked) {
-                console.log(checked);
-                console.log(val);
                 var xhr = new XMLHttpRequest();
                 xhr.open("GET", "insert_txn.php?val=" + val, true);
                 xhr.onreadystatechange = function () {
@@ -72,8 +82,6 @@
                 };
                 xhr.send();
             } else {
-                console.log(checked);
-                console.log(val);
                 var xhr = new XMLHttpRequest();
                 xhr.open("GET", "del_txn.php?val=" + val, true);
                 xhr.onreadystatechange = function () {

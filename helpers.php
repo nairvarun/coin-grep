@@ -1,5 +1,4 @@
 <?php
-include('dbcoonnector.php');
 function query() {
     $qry = $_POST['search'];
 
@@ -11,7 +10,7 @@ function query() {
 }
 
 function query_addr($addr) {
-    include('dbcoonnector.php');
+    include('db_connection.php');
     $url = "https://api.blockcypher.com/v1/btc/main/addrs/$addr";
     $response = makeRequest($url);
     $res = json_decode($response, true);
@@ -65,7 +64,7 @@ function query_addr($addr) {
         }
 
         if ($exists) {
-            echo '<input type="checkbox" onchange="handle_txn(this.checked, `' . $curr_tx . '`)"> <a class="flag" href="results.php?search=' . $curr_tx . '">' . $curr_tx . '</a><br><br>';
+            echo '<input type="checkbox" onchange="handle_txn(this.checked, `' . $curr_tx . '`)" checked> <a class="flag" href="results.php?search=' . $curr_tx . '">' . $curr_tx . '</a><br><br>';
         } else {
             echo '<input type="checkbox" onchange="handle_txn(this.checked, `' . $curr_tx . '`)"> <a href="results.php?search=' . $curr_tx . '">' . $curr_tx . '</a><br><br>';
         }
@@ -76,7 +75,7 @@ function query_addr($addr) {
 }
 
 function query_txn($txn_id) {
-    include('dbcoonnector.php');
+    include('db_connection.php');
     $url = "https://api.blockcypher.com/v1/btc/main/txs/$txn_id";
     $response = makeRequest($url);
     $res = json_decode($response, true);
@@ -130,7 +129,7 @@ function query_txn($txn_id) {
         }
 
         if ($exists) {
-            echo '<input type="checkbox" onchange="handle_addr(this.checked, `' . $ad . '`)"> <a class="flag" href="results.php?search=' . $ad . '">' . $ad . '</a><br><br>';
+            echo '<input type="checkbox" onchange="handle_addr(this.checked, `' . $ad . '`)" checked> <a class="flag" href="results.php?search=' . $ad . '">' . $ad . '</a><br><br>';
         } else {
             echo '<input type="checkbox" onchange="handle_addr(this.checked, `' . $ad . '`)"> <a href="results.php?search=' . $ad . '">' . $ad . '</a><br><br>';
         }
@@ -146,6 +145,42 @@ function makeRequest($url) {
     $response = curl_exec($ch);
     curl_close($ch);
     return $response;
+}
+
+function del_addr_from_db($val) {
+    include('db_connection.php');
+    $sql = "DELETE FROM Adress WHERE adress = '$val'";
+
+    if (!mysqli_query($conn, $sql)) {
+        echo "Error: " . mysqli_error($conn);
+    }
+}
+
+function insert_addr_into_db($val) {
+    include('db_connection.php');
+    $sql = "INSERT INTO  Adress (adress) VALUES ('$val')";
+
+    if (!mysqli_query($conn, $sql)) {
+        echo "Error: " . mysqli_error($conn);
+    }
+}
+
+function del_txn_from_db($val) {
+    include('db_connection.php');
+    $sql = "DELETE FROM transaction WHERE transaction = '$val'";
+
+    if (!mysqli_query($conn, $sql)) {
+        echo "Error: " . mysqli_error($conn);
+    }
+}
+
+function insert_txn_into_db($val) {
+    include('db_connection.php');
+    $sql = "INSERT INTO  transaction (transaction) VALUES ('$val')";
+
+    if (!mysqli_query($conn, $sql)) {
+        echo "Error: " . mysqli_error($conn);
+    }
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
