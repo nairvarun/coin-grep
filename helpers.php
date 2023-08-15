@@ -56,27 +56,18 @@ function query_addr($addr) {
     echo '<td>';
     foreach ($res['txrefs'] as $tx) {
         $curr_tx=$tx['tx_hash'];
-
-        $sql = "INSERT INTO transaction(transaction) VALUES ('$curr_tx')";
-        if (!mysqli_query($conn, $sql)) {
-            echo "Error: " . mysqli_error($conn);
-        }
-
         $sql1 = "SELECT * FROM transaction WHERE transaction = '$curr_tx'";
         $result = $conn->query($sql1);
         if ($result->num_rows > 0) {
-            // Value exists in the table
             $exists = true;
         } else {
-            // Value does not exist in the table
             $exists = false;
         }
 
-
         if ($exists) {
-            echo '<input type="checkbox" name="" id=""> <a class="flag" href="results.php?search=' . $tx['tx_hash'] . '">' . $tx['tx_hash'] . '</a><br><br>';
+            echo '<input type="checkbox" onchange="handle_txn(this.checked, `' . $curr_tx . '`)"> <a class="flag" href="results.php?search=' . $curr_tx . '">' . $curr_tx . '</a><br><br>';
         } else {
-            echo '<input type="checkbox" name="" id=""> <a href="results.php?search=' . $tx['tx_hash'] . '">' . $tx['tx_hash'] . '</a><br><br>';
+            echo '<input type="checkbox" onchange="handle_txn(this.checked, `' . $curr_tx . '`)"> <a href="results.php?search=' . $curr_tx . '">' . $curr_tx . '</a><br><br>';
         }
     }
     echo '</td>';
@@ -130,25 +121,18 @@ function query_txn($txn_id) {
     echo '<td class="res_top">Sent To</td>';
     echo '<td>';
     foreach ($res['addresses'] as $ad) {
-        $sql = "INSERT INTO  Adress(adress) VALUES ('$ad')";
-
-        if (!mysqli_query($conn, $sql)) {
-            echo "Error: " . mysqli_error($conn);
-        }
         $sql1 = "SELECT * FROM Adress WHERE adress = '$ad' ";
         $result = $conn->query($sql1);
         if ($result->num_rows > 0) {
-            // Value exists in the table
             $exists = true;
         } else {
-            // Value does not exist in the table
             $exists = false;
         }
 
         if ($exists) {
-            echo '<input type="checkbox" name="" id="" onchange="insertTxHash(this.value)"> <a class="flag" href="results.php?search=' . $ad . '">' . $ad . '</a><br><br>';
+            echo '<input type="checkbox" onchange="handle_addr(this.checked, `' . $ad . '`)"> <a class="flag" href="results.php?search=' . $ad . '">' . $ad . '</a><br><br>';
         } else {
-            echo '<input type="checkbox" name="" id=""> <a href="results.php?search=' . $ad . '">' . $ad . '</a><br><br>';
+            echo '<input type="checkbox" onchange="handle_addr(this.checked, `' . $ad . '`)"> <a href="results.php?search=' . $ad . '">' . $ad . '</a><br><br>';
         }
     }
     echo '</td>';

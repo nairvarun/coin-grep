@@ -17,7 +17,7 @@
 
     <div id="res_result">
         <?php
-        require 'helpers.php';
+        require_once('helpers.php');
 
         if (isset($_GET['search'])) {
             $search = $_GET['search'];
@@ -30,5 +30,64 @@
         ?>
     </div>
     <script src="./script.js"></script>
+    <script>
+        function handle_addr(checked, val) {
+            if (checked) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "insert_addr.php?val=" + val, true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            console.log(xhr.responseText); // Response from PHP
+                        }
+                    }
+                };
+                xhr.send();
+            } else {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "del_addr.php?val=" + val, true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            console.log(xhr.responseText); // Response from PHP
+                        }
+                    }
+                };
+                xhr.send();
+            }
+        }
+
+        function handle_txn(checked, val) {
+            if (checked) {
+                console.log(checked);
+                console.log(val);
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "insert_txn.php?val=" + val, true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            console.log(xhr.responseText); // Response from PHP
+                        }
+                    }
+                };
+                xhr.send();
+            } else {
+                console.log(checked);
+                console.log(val);
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "del_txn.php?val=" + val, true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            console.log(xhr.responseText); // Response from PHP
+                        }
+                    }
+                };
+                xhr.send();
+            }
+
+        }
+    </script>
+
 </body>
 </html>
