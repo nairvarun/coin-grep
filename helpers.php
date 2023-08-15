@@ -11,6 +11,7 @@ function query() {
 }
 
 function query_addr($addr) {
+    include('dbcoonnector.php');
     $url = "https://api.blockcypher.com/v1/btc/main/addrs/$addr";
     $response = makeRequest($url);
     $res = json_decode($response, true);
@@ -54,7 +55,29 @@ function query_addr($addr) {
     echo '<td class="res_top">Transactions</td>';
     echo '<td>';
     foreach ($res['txrefs'] as $tx) {
-        echo '<a href="results.php?search=' . $tx['tx_hash'] . '">' . $tx['tx_hash'] . '</a><br><br>';
+        $curr_tx=$tx['tx_hash'];
+
+        $sql = "INSERT INTO transaction(transaction) VALUES ('$curr_tx')";
+        if (!mysqli_query($conn, $sql)) {
+            echo "Error: " . mysqli_error($conn);
+        }
+
+        $sql1 = "SELECT * FROM transaction WHERE transaction = '$curr_tx'";
+        $result = $conn->query($sql1);
+        if ($result->num_rows > 0) {
+            // Value exists in the table
+            $exists = true;
+        } else {
+            // Value does not exist in the table
+            $exists = false;
+        }
+
+
+        if ($exists) {
+            echo '<input type="checkbox" name="" id=""> <a class="flag" href="results.php?search=' . $tx['tx_hash'] . '">' . $tx['tx_hash'] . '</a><br><br>';
+        } else {
+            echo '<input type="checkbox" name="" id=""> <a href="results.php?search=' . $tx['tx_hash'] . '">' . $tx['tx_hash'] . '</a><br><br>';
+        }
     }
     echo '</td>';
     echo '</tr>';
@@ -109,13 +132,24 @@ function query_txn($txn_id) {
     foreach ($res['addresses'] as $ad) {
         $sql = "INSERT INTO  Adress(adress) VALUES ('$ad')";
 
-        if (mysqli_query($conn, $sql)) {
-            echo "Registration successful!";
-        } else {
+        if (!mysqli_query($conn, $sql)) {
             echo "Error: " . mysqli_error($conn);
         }
-        echo '<a href="results.php?search=' . $ad . '">' . $ad . '</a><br><br>';
+        $sql1 = "SELECT * FROM Adress WHERE adress = '$ad' ";
+        $result = $conn->query($sql1);
+        if ($result->num_rows > 0) {
+            // Value exists in the table
+            $exists = true;
+        } else {
+            // Value does not exist in the table
+            $exists = false;
+        }
 
+        if ($exists) {
+            echo '<input type="checkbox" name="" id="" onchange="insertTxHash(this.value)"> <a class="flag" href="results.php?search=' . $ad . '">' . $ad . '</a><br><br>';
+        } else {
+            echo '<input type="checkbox" name="" id=""> <a href="results.php?search=' . $ad . '">' . $ad . '</a><br><br>';
+        }
     }
     echo '</td>';
     echo '</tr>';

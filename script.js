@@ -5,8 +5,20 @@ function fill_addr() {
 function fill_txn() {
     document.querySelector('#idx_search').value = '9b60eb6bdf8dd0520d18320865b044dae8edf444683de9c1e4c02b15e949a42c'
 }
-
-
+function insertTxHash(txHash) {
+    // Create an AJAX request to the PHP script
+    fetch('insert_tx.php', {
+        method: 'POST',
+        body: JSON.stringify({ tx_hash: txHash })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
 // document.getElementById('searchbar').onkeydown = function (e) {
 //     if (e.key == 'Enter') {
 //         location.href = `items/${document.getElementById('searchbar').value}`

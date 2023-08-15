@@ -164,3 +164,7 @@ a:hover {
 .res_extra_result tr:last-of-type>td {
   border-bottom: 1px solid var(--nord3);
 }
+
+.flag {
+  color: var(--nord11);
+}
