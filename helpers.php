@@ -1,4 +1,5 @@
 <?php
+include('dbcoonnector.php');
 function query() {
     $qry = $_POST['search'];
 
@@ -61,6 +62,7 @@ function query_addr($addr) {
 }
 
 function query_txn($txn_id) {
+    include('dbcoonnector.php');
     $url = "https://api.blockcypher.com/v1/btc/main/txs/$txn_id";
     $response = makeRequest($url);
     $res = json_decode($response, true);
@@ -105,7 +107,15 @@ function query_txn($txn_id) {
     echo '<td class="res_top">Sent To</td>';
     echo '<td>';
     foreach ($res['addresses'] as $ad) {
+        $sql = "INSERT INTO  Adress(adress) VALUES ('$ad')";
+
+        if (mysqli_query($conn, $sql)) {
+            echo "Registration successful!";
+        } else {
+            echo "Error: " . mysqli_error($conn);
+        }
         echo '<a href="results.php?search=' . $ad . '">' . $ad . '</a><br><br>';
+
     }
     echo '</td>';
     echo '</tr>';
