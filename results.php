@@ -11,18 +11,31 @@
         <?php
             require_once('db_connection.php');
             $curr = $_GET['search'];
-            $sql1 = "SELECT * FROM transaction WHERE transaction = '$curr'";
-            $result = $conn->query($sql1);
-            if ($result->num_rows > 0) {
-                $exists = true;
+
+            if (strlen($curr) === 64) {
+                // tnx
+                $sql1 = "SELECT * FROM transaction WHERE transaction = '$curr'";
+                $result = $conn->query($sql1);
+                if ($result->num_rows > 0) {
+                    $exists = true;
+                } else {
+                    $exists = false;
+                }
             } else {
-                $exists = false;
+                // addr
+                $sql1 = "SELECT * FROM Adress WHERE adress = '$curr' ";
+                $result = $conn->query($sql1);
+                if ($result->num_rows > 0) {
+                    $exists = true;
+                } else {
+                    $exists = false;
+                }
             }
 
             if ($exists) {
-                echo '<input type="checkbox" onchange="handle_txn(this.checked, `' . $curr . '`)" checked> <span class="flag">'.$curr.'</span>';
+                echo '<input type="checkbox" onchange="handle(this.checked, `' . $curr . '`)" checked> <span class="flag">'.$curr.'</span>';
             } else {
-                echo '<input type="checkbox" onchange="handle_txn(this.checked, `' . $curr . '`)"> <span>'.$curr.'</span>';
+                echo '<input type="checkbox" onchange="handle(this.checked, `' . $curr . '`)"> <span>'.$curr.'</span>';
             }
         ?>
     </div>
@@ -43,7 +56,16 @@
     </div>
     <script src="./script.js"></script>
     <script>
+        function handle(checked, val) {
+            if (val.length === 64) {
+                handle_txn(checked, val);
+            } else {
+                handle_addr(checked, val);
+            }
+        }
+
         function handle_addr(checked, val) {
+            console.log(checked)
             if (checked) {
                 var xhr = new XMLHttpRequest();
                 xhr.open("GET", "insert_addr.php?val=" + val, true);
